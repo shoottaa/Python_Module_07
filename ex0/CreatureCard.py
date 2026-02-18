@@ -20,7 +20,6 @@ class CreatureCard(Card):
         if not self.is_playable(game_state["player_mana"]):
             raise ValueError("Not enough mana to play this card.")
         game_state["player_mana"] -= self.cost
-        game_state["board"].append(self)
         return {
             "card_played": self.name,
             "mana_used": self.cost,

@@ -7,7 +7,7 @@ def main():
 
     game_state = {
         "player_mana": 6,
-        "board": []  # Ensure board is initialized as a list
+        "board": []
     }
 
     dragon = CreatureCard("Fire Dragon", 5, "Legendary", 7, 5)
