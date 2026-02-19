@@ -15,7 +15,7 @@ class ArtifactCard(Card):
             'effect': self.effect
         }
 
-    def activate_ability(self, game_state: dict) -> dict:
+    def activate_ability(self) -> dict:
         return {
             'artifact_name': self.name,
             'effect': self.effect,

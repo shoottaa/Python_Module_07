@@ -6,14 +6,18 @@ from ex1.SpellCard import SpellCard
 
 
 class Deck:
-    def __init__(self, cards: list[Card]) -> None:
-        self.cards = cards
+    def __init__(self) -> None:
+        self.cards = []
 
     def add_card(self, card: Card) -> None:
         self.cards.append(card)
 
-    def remove_card(self, card: Card) -> None:
-        self.cards.remove(card)
+    def remove_card(self, card_name: str) -> bool:
+        for card in self.cards:
+            if card.name == card_name:
+                self.cards.remove(card)
+                return True
+        return False
 
     def shuffle(self) -> None:
         random.shuffle(self.cards)
@@ -21,18 +25,30 @@ class Deck:
     def draw_card(self) -> Card:
         if self.cards:
             return self.cards.pop(0)
-        else:
-            raise IndexError("Deck is empty")
+        return None
 
     def get_deck_stats(self) -> dict:
+        total_cards = len(self.cards)
+        creatures = 0
+        spells = 0
+        artifacts = 0
+        total_cost = 0
+
+        for card in self.cards:
+            total_cost += card.cost
+            if isinstance(card, CreatureCard):
+                creatures += 1
+            elif isinstance(card, SpellCard):
+                spells += 1
+            elif isinstance(card, ArtifactCard):
+                artifacts += 1
+
+        avg_cost = total_cost / total_cards if total_cards > 0 else 0
+
         return {
             'total_cards': len(self.cards),
-            'creatures': sum(1 for card in self.cards
-                             if isinstance(card, CreatureCard)),
-            'spells': sum(1 for card in self.cards
-                          if isinstance(card, SpellCard)),
-            'artifacts': sum(1 for card in self.cards
-                             if isinstance(card, ArtifactCard)),
-            'avg_cost': (round(sum(card.cost for card in self.cards)
-                         / len(self.cards), 1) if self.cards else 0.0)
+            'creatures': creatures,
+            'spells': spells,
+            'artifacts': artifacts,
+            'avg_cost': avg_cost
         }
