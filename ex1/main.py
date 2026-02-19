@@ -12,7 +12,7 @@ def main():
     lightning = SpellCard("Lightning Bolt", 4, "Rare", "damage")
     crystal = ArtifactCard("Mana Crystal", 4, "Common", 5, "+1 mana per turn")
 
-    deck = Deck([])
+    deck = Deck()
 
     deck.add_card(dragon)
     deck.add_card(lightning)
