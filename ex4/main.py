@@ -36,7 +36,8 @@ def main():
     leaderboard = platform.get_leaderboard()
     rank = 1
     for cid, card in leaderboard:
-        print(f"{rank}. {card.name} - Rating: {card.rating} ({card.wins}-{card.losses})")
+        print(f"{rank}. {card.name} - Rating: {card.rating} "
+              f"({card.wins}-{card.losses})")
         rank += 1
 
     print("\nPlatform Report:")
