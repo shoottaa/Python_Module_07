@@ -9,10 +9,10 @@ class FantasyCardFactory(CardFactory):
         return CreatureCard("Fire Dragon", 5, "Legendary", 7, 5)
 
     def create_spell(self, name_or_power=None):
-        return SpellCard("Goblin Warrior", 2, "Rare", "damage")
+        return SpellCard("Lightning Bolt", 3, "Rare", "damage")
 
     def create_artifact(self, name_or_power=None):
-        return ArtifactCard("Lightning Bolt", 3, "Common", 5,
+        return ArtifactCard("Mana Ring", 2, "Common", 5,
                             "+1 mana per turn")
 
     def create_themed_deck(self, size: int) -> dict:

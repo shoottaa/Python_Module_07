@@ -19,13 +19,9 @@ def main():
     engine.configure_engine(factory, strategy)
 
     print("\nSimulating aggressive turn...")
+    turn_result = engine.simulate_turn()
 
-    hand = [
-        factory.create_creature(),
-        factory.create_spell(),
-        factory.create_artifact()
-    ]
-
+    hand = turn_result['hand']
     hand_str = (
         f"Hand: [{hand[0].name} ({hand[0].cost}), "
         f"{hand[1].name} ({hand[1].cost}), "
@@ -34,7 +30,6 @@ def main():
     print(hand_str)
 
     print("\nTurn execution:")
-    turn_result = engine.simulate_turn()
     print("Strategy:", turn_result['strategy'])
     print("Actions:", turn_result['actions'])
 

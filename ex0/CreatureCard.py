@@ -11,8 +11,8 @@ class CreatureCard(Card):
         health: int,
     ) -> None:
         super().__init__(name, cost, rarity)
-        if attack < 0 or health < 0:
-            raise ValueError("Attack and health values cannot be negative.")
+        if attack <= 0 or health <= 0:
+            raise ValueError("Attack and health values must be positive.")
         self.attack: int = attack
         self.health: int = health
 

@@ -8,10 +8,17 @@ class SpellCard(Card):
         self.effect_type = effect_type
 
     def play(self, game_state: dict) -> dict:
+        effect_messages = {
+            'damage': f'Deal {self.cost} damage to target',
+            'heal': f'Heal {self.cost} health to target',
+            'buff': f'Buff target by {self.cost}',
+            'debuff': f'Debuff target by {self.cost}',
+        }
+        effect_msg = effect_messages.get(self.effect_type, self.effect_type)
         return {
             'card_played': self.name,
             'mana_used': self.cost,
-            'effect': self.effect_type
+            'effect': effect_msg
         }
 
     def resolve_effect(self, targets: list) -> dict:

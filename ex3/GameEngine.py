@@ -1,5 +1,5 @@
-from ex3 import CardFactory
-from ex3 import GameStrategy
+from ex3.CardFactory import CardFactory
+from ex3.GameStrategy import GameStrategy
 
 
 class GameEngine:
@@ -30,7 +30,8 @@ class GameEngine:
 
         return {
             'strategy': self.game_strategy.get_strategy_name(),
-            'actions': result
+            'actions': result,
+            'hand': hand
         }
 
     def get_engine_status(self) -> dict:

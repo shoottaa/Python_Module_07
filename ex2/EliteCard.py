@@ -27,12 +27,13 @@ class EliteCard(Card, Combatable, Magical):
         }
 
     def defend(self, incoming_damage: int) -> dict:
+        damage_blocked = min(incoming_damage, self.defense)
         damage_taken = max(0, incoming_damage - self.defense)
         return {
             'defender': self.name,
             'damage_taken': damage_taken,
-            'damage_blocked': self.defense,
-            'still_alive': damage_taken < self.defense
+            'damage_blocked': damage_blocked,
+            'still_alive': damage_taken < self.attack_power
         }
 
     def get_combat_stats(self) -> dict:

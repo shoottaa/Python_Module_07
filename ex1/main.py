@@ -4,6 +4,16 @@ from ex1.ArtifactCard import ArtifactCard
 from ex1.Deck import Deck
 
 
+def get_card_type(card):
+    if isinstance(card, CreatureCard):
+        return "Creature"
+    elif isinstance(card, SpellCard):
+        return "Spell"
+    elif isinstance(card, ArtifactCard):
+        return "Artifact"
+    return "Card"
+
+
 def main():
     print("=== DataDeck Deck Builder ===")
 
@@ -22,26 +32,19 @@ def main():
 
     print("\nDrawing and playing cards:")
 
+    game_state = {'player_mana': 10, 'board': []}
+
     card1 = deck.draw_card()
-    print(f"\nDrew: {card1.name} (Spell)")
-    if isinstance(card1, CreatureCard):
-        print("Play result:", card1.play({'player_mana': 10, 'board': []}))
-    else:
-        print("Play result:", card1.play({}))
+    print(f"\nDrew: {card1.name} ({get_card_type(card1)})")
+    print("Play result:", card1.play(game_state))
 
     card2 = deck.draw_card()
-    print(f"\nDrew: {card2.name} (Artifact)")
-    if isinstance(card2, CreatureCard):
-        print("Play result:", card2.play({'player_mana': 10, 'board': []}))
-    else:
-        print("Play result:", card2.play({}))
+    print(f"\nDrew: {card2.name} ({get_card_type(card2)})")
+    print("Play result:", card2.play(game_state))
 
     card3 = deck.draw_card()
-    print(f"\nDrew: {card3.name} (Creature)")
-    if isinstance(card3, CreatureCard):
-        print("Play result:", card3.play({'player_mana': 10, 'board': []}))
-    else:
-        print("Play result:", card3.play({}))
+    print(f"\nDrew: {card3.name} ({get_card_type(card3)})")
+    print("Play result:", card3.play(game_state))
 
     print(
         "\nPolymorphism in action: Same interface, different card behaviors!"

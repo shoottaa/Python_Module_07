@@ -12,11 +12,8 @@ def main():
     dragon = TournamentCard("Fire Dragon", 5, "Legendary", 8, 3, 1200)
     wizard = TournamentCard("Ice Wizard", 4, "Rare", 6, 4, 1150)
 
-    id1 = "dragon_001"
-    id2 = "wizard_001"
-
-    platform.cards[id1] = dragon
-    platform.cards[id2] = wizard
+    id1 = platform.register_card(dragon)
+    id2 = platform.register_card(wizard)
 
     print(f"Fire Dragon (ID: {id1}):")
     print("- Interfaces: [Card, Combatable, Rankable]")
